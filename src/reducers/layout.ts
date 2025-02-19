@@ -28,7 +28,7 @@ export type State = {
 }
 const initialState: State = {
   initialized: false,
-  drawer: true,
+  drawer: false,
   inspectByMouse: false,
   advertismentPosition: [0, 0],
 

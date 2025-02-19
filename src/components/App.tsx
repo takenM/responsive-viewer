@@ -53,7 +53,6 @@ function App() {
       <HelpDialog />
       <LocalWarning />
       <AppBar />
-      {!drawer && <Advertisement fixed />}
       <Draw />
 
       <Box display="flex" overflow="hidden" flex={1}>

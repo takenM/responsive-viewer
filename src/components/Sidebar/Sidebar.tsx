@@ -1,11 +1,14 @@
 import React from 'react'
+import { ChevronLeft, ChevronRight } from '@mui/icons-material'
+import { useDispatch } from 'react-redux'
+import { toggleDrawer } from '../../reducers/layout'
 import Box, { BoxProps } from '@mui/material/Box'
 import Screens from './Screens'
 import Toolbar from './Toolbar'
-import Advertisement from '../Advertisement'
 import { styled, darken, lighten } from '@mui/material/styles'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { selectDrawer } from '../../reducers/layout'
+import Button from '@mui/material/Button'
 
 interface Props extends BoxProps {
   open: boolean
@@ -22,10 +25,17 @@ const Drawer = styled(({ open, ...rest }: Props) => <Box {...rest} />)(
 )
 
 const Sidebar = () => {
+  const dispatch = useDispatch()
   const open = useAppSelector(selectDrawer)
+  const handleToggle = () => {
+    dispatch(toggleDrawer())
+  }
+
   return (
     <Drawer open={open}>
-      {open && <Advertisement />}
+      <Button onClick={handleToggle}>
+        {open ? <ChevronLeft /> : <ChevronRight />}
+      </Button>
 
       <Toolbar direction={open ? 'row' : 'column'} />
 
